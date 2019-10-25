@@ -5,20 +5,20 @@
   
 
   
-  <title>前端上传图片 | 好好学习</title>
+  <title>Html上传文件 | 好好学习</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="上传文件  通过form表单来上传   1） form标签中设置好 action 图片提交的接口  2） 表单method 必须为POST  3） form 标签中必须设置 enctype=&amp;#39;multipart/form-data&amp;#39; 类型  4） 然后在from标签中 添加 &amp;lt;input name=&amp;quot;image&amp;quot; type=&amp;#39;file&amp;#39; /">
-<meta name="keywords" content="前端,上传文件">
+  <meta name="description" content="同步/异步上传 通过form表单来上传   1） form标签中设置好 action 图片提交的接口  2） 表单method 必须为POST  3） form 标签中必须设置 enctype=&amp;#39;multipart/form-data&amp;#39; 类型  4） 然后在from标签中 添加 &amp;lt;input name=&amp;quot;image&amp;quot; type=&amp;#39;file&amp;#39;">
+<meta name="keywords" content="前端 上传文件 同步 异步">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端上传图片">
+<meta property="og:title" content="Html上传文件">
 <meta property="og:url" content="http://blog.ccooddee.cn/2019/09/26/frontend_upload_file/index.html">
 <meta property="og:site_name" content="好好学习">
-<meta property="og:description" content="上传文件  通过form表单来上传   1） form标签中设置好 action 图片提交的接口  2） 表单method 必须为POST  3） form 标签中必须设置 enctype=&amp;#39;multipart/form-data&amp;#39; 类型  4） 然后在from标签中 添加 &amp;lt;input name=&amp;quot;image&amp;quot; type=&amp;#39;file&amp;#39; /">
+<meta property="og:description" content="同步/异步上传 通过form表单来上传   1） form标签中设置好 action 图片提交的接口  2） 表单method 必须为POST  3） form 标签中必须设置 enctype=&amp;#39;multipart/form-data&amp;#39; 类型  4） 然后在from标签中 添加 &amp;lt;input name=&amp;quot;image&amp;quot; type=&amp;#39;file&amp;#39;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-27T10:00:08.138Z">
+<meta property="og:updated_time" content="2019-10-18T08:41:57.039Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端上传图片">
-<meta name="twitter:description" content="上传文件  通过form表单来上传   1） form标签中设置好 action 图片提交的接口  2） 表单method 必须为POST  3） form 标签中必须设置 enctype=&amp;#39;multipart/form-data&amp;#39; 类型  4） 然后在from标签中 添加 &amp;lt;input name=&amp;quot;image&amp;quot; type=&amp;#39;file&amp;#39; /">
+<meta name="twitter:title" content="Html上传文件">
+<meta name="twitter:description" content="同步/异步上传 通过form表单来上传   1） form标签中设置好 action 图片提交的接口  2） 表单method 必须为POST  3） form 标签中必须设置 enctype=&amp;#39;multipart/form-data&amp;#39; 类型  4） 然后在from标签中 添加 &amp;lt;input name=&amp;quot;image&amp;quot; type=&amp;#39;file&amp;#39;">
   
     <link rel="alternate" href="/atom.xml" title="好好学习" type="application/atom+xml">
   
@@ -83,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      前端上传图片
+      Html上传文件
     </h1>
   
 
@@ -91,8 +91,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h2><hr>
-<ol>
+        <h2 id="同步-异步上传"><a href="#同步-异步上传" class="headerlink" title="同步/异步上传"></a>同步/异步上传</h2><ol>
 <li><p>通过form表单来上传 </p>
 <p> 1） form标签中设置好 <code>action</code> 图片提交的接口</p>
 <p> 2） 表单<code>method</code> 必须为POST</p>
@@ -107,22 +106,37 @@
 <p> 这样就完成了提交操作</p>
 </li>
 <li><p>通过Ajax提交</p>
+<p> js 中 FormData 对象可实现<br> 发送请求的时候 header 中要设置 </p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//html</span><br><span class="line"> <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"image"</span> <span class="attr">type</span>=<span class="string">'file'</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//javascript</span></span><br><span class="line"><span class="keyword">let</span> img1 = <span class="built_in">document</span>.querySelector(<span class="string">"input[name=image]).file[0];</span></span><br><span class="line"><span class="string">let type = img1.type; //文件的类型，判断是否是图片</span></span><br><span class="line"><span class="string">let form = new FormData();</span></span><br><span class="line"><span class="string">form.append("</span>file<span class="string">", img1, img1.name);</span></span><br><span class="line"><span class="string">// header 中要设置  &#123; "</span>Content-Type<span class="string">": "</span>multipart/form-data<span class="string">" &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p> 然后以POST 方式将数据发送到数据接口 就ok啦</p>
 </li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.ccooddee.cn/2019/09/26/frontend_upload_file/" data-id="ck11yjhbe0000xsjalbhyeybu" class="article-share-link">分享</a>
+      <a data-url="http://blog.ccooddee.cn/2019/09/26/frontend_upload_file/" data-id="ck25ylwo70000tgjaea1zvlld" class="article-share-link">分享</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/上传文件/">上传文件</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端-上传文件-同步-异步/">前端 上传文件 同步 异步</a></li></ul>
 
     </footer>
   </div>
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/10/18/导出多个表格Sheet/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          导出多个表格Sheet
+        
+      </div>
+    </a>
   
   
     <a href="/2019/09/23/guancanghai/" id="article-nav-older" class="article-nav-link-wrap">
@@ -146,7 +160,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/上传文件/">上传文件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端-上传文件-同步-异步/">前端 上传文件 同步 异步</a></li></ul>
     </div>
   </div>
 
@@ -156,7 +170,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/上传文件/" style="font-size: 10px;">上传文件</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a>
+      <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/前端-上传文件-同步-异步/" style="font-size: 10px;">前端 上传文件 同步 异步</a>
     </div>
   </div>
 
@@ -165,7 +179,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li></ul>
     </div>
   </div>
 
@@ -178,7 +192,11 @@
       <ul>
         
           <li>
-            <a href="/2019/09/26/frontend_upload_file/">前端上传图片</a>
+            <a href="/2019/10/18/导出多个表格Sheet/">导出多个表格Sheet</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/26/frontend_upload_file/">Html上传文件</a>
           </li>
         
           <li>
